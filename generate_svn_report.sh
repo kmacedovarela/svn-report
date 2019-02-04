@@ -1,13 +1,12 @@
 #!/bin/bash 
 
 if [[ -n "$1" ]]; then
-        project="MyProjectFolderName"
-	branch=$1  # exemplo:  trunk, 1.0.4
-	begin="2018-$2"   # exemplo: 2018-04-01
-	end="2018-$3"     # exemplo: 2018-04-15
-	users=" --search username1 --search username2 --search username3"
+    
+	. "./svn_config.sh"
 
-	export PROJECT_DIR=/path/to/your/project/branches/$branch/$project
+	echo "Teste "$begin
+
+	export PROJECT_DIR=$svn_path/$branch/$project
 	svn up $PROJECT_DIR
 
 	echo ""
