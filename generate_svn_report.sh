@@ -4,8 +4,6 @@ if [[ -n "$1" ]]; then
     
 	. "./svn_config.sh"
 
-	echo "Teste "$begin
-
 	export PROJECT_DIR=$svn_path/$branch/$project
 	svn up $PROJECT_DIR
 
