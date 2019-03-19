@@ -4,8 +4,8 @@ if [[ -n "$1" ]]; then
     
 	. "./svn_config.sh"
 
-	if [[ "$type" = "remote" ]]; then
-                mkdir project
+	if [ [[ "$type" = "remote" ]] -o [[ $svn_path == http* ]] ] ; then
+                mkdir $project
                 svn checkout $svn_url/$branch project/$branch
                 export PROJECT_DIR=project/$branch/$project	
 
@@ -15,14 +15,14 @@ if [[ -n "$1" ]]; then
         fi
 
 	echo ""
-	echo "Gerando report de $branch entre $begin e $end "
+	echo "Creating report on branch $branch from: $begin to $end "
 	echo ""
 
 	svn log $PROJECT_DIR -v --limit 4000 $users --xml --revision {$begin}:{$end} > svn_log.xml
 
 	java -jar saxon9he.jar -o:report_$branch.html svn_log.xml style.xsl
 
-	# Substituindo o título do report com "$1"
+	# Changing report title with: "$1"
         titulo="Relatório sobre $branch entre $begin e $end"
 	sed -i -- "s/TITULO/$titulo/g" report.html
 
