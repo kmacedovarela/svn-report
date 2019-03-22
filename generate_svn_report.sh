@@ -4,10 +4,10 @@ if [[ -n "$1" ]]; then
     
 	. "./svn_config.sh"
 
-	if [ [[ "$type" = "remote" ]] -o [[ $svn_path == http* ]] ] ; then
+	if [[ $svn_path == http* ]]  ; then
                 mkdir $project
                 svn checkout $svn_url/$branch project/$branch
-                export PROJECT_DIR=project/$branch/$project	
+                export PROJECT_DIR=$project/$branch/$project	
 
         else
 		export PROJECT_DIR=$svn_path/$branch/$project

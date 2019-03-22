@@ -2,10 +2,9 @@ project="MyProjectFolderName"
 
 year="2019"
 
-type="remote" # example: remote | local . Can also be determined by the presence of a local path or remote path
+# example: /my/cloned/svn/rpository/branches | http://my.svn.url/svn/project . Can will be determined by the presence of a local path or remote path
 #svn_path="/path/to/your/project/branches/"
 svn_path="http://urlsvn/project/branches/"
-
 
 branch=$1  # examples:  trunk | 1.0.4
 
